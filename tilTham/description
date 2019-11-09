@@ -1,0 +1,27 @@
+Her er det jeg har skrevet kjapt om figurene + litt implementation, utdyp gjerne
+
+IMPLEMENTATION:
+
+We used scikit learns \textit{train_test_split} to split the data into training and test data. This function shuffles the data randomly before splitting.
+
+We onehot-encoded columns 2, 3, 4, and 5, i.e. the gender, education, marital status and age columns. That is because the values in these columns does not have a set relationship between them. All columns holding information on payments always represent a month inbetween the different values, whereas the columns 2, 3, 4 and 5 does not have such a "set relationship"; there is not a month or another set number/meaning between graduate school and university, and university and high school for instance.
+
+We implemented the accuracy, F1, MSE and R2 scores using the scikit learn library. In addition, we implemented the confusion matrix.
+
+
+We found that the F1 score and confusion matrix are better at determining whether our network performs well or not. Early in the process of building our network we got decent accuracy scores, around ~ 0.78. However, when plotting the confusion matrix and F1 score, we discovered that the network only predicted one of the classes (0). The decent-looking accuracy score results from the fact that our dataset is very imbalanced. As shown in the figure below [FIGURNAVN: pj2_distfig], the dataset contains 79 % 0s and 21 % 1s. This means that even if our accuracy score is at 79 %, the network might only have predicted only zeros (see figure [FIGNAVN nn_conf_all0_acc0785])
+In this analysis, we have therefore focused mainly on the F1 score and confusion matrix to evaluate the network performance.
+To test if the network was actually learning, we trained it on a dataset only containing 0s and only 1s. We can see that the network was able to learn to classify both, which confirmed that the network was able to learn To improve performance, we then wanted to change the different hyperparameters.
+
+We ran our analyses using training and test sets of equals sizes, i.e. we used half of the data for training and the other half for testing. As our network performed poorly, we tried to increase the training amount, but this did not change the performance, as shown in figure [FIGNAVN: nn_conf_moretraining_acc0818]. It would have been interesting to create a more balanced data set, simply by taking out a number of 0s to make the distribution of 0s and 1s 50/50.
+
+
+FIGS
+pj2_distfig: Distribution of 0s and 1s in target data. The data set is very imbalanced.
+nn_conf_all0_acc0785 figurtekst: Confusion matrix, network only trained on 0s. Accuracy score: 0.785
+
+
+
+
+
+P.S.: WATER FLOWS OUT OF THE SNOWY
